@@ -4,7 +4,7 @@
 
 ## 目录
 
-`source.py` 提供可重复的本地来源；`reader.py` 负责现有读取；`app.py` 是预览入口；`fixtures/source.json` 可替换为同结构样例；`docs/数据约定.md` 描述接口与数据含义。
+`source.py` 提供可重复的本地来源；`reader.py` 负责现有读取；`app.py` 是预览入口；`scheduler.py` 是可嵌入采集进程的分层额度调度器（出口/凭据组/租户三层约束，429 作用域冷却，重放安全，崩溃恢复，加权公平）；`demo.py` 用竞争队列与故障传输演示调度行为；`fixtures/source.json` 可替换为同结构样例；`docs/数据约定.md` 描述接口与数据含义，`docs/调度器约定.md` 描述调度器的确定规则。
 
 ## 运行
 
@@ -12,8 +12,9 @@
 
 ```bash
 python3 app.py
+python3 demo.py
 python3 -m unittest discover -s tests -v
-PYTHONPYCACHEPREFIX=/tmp/collector-pycache python3 -m compileall -q app.py reader.py source.py tests
+PYTHONPYCACHEPREFIX=/tmp/collector-pycache python3 -m compileall -q app.py reader.py source.py scheduler.py demo.py tests
 ```
 
 ## 容器
