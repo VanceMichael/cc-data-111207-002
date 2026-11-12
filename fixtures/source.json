@@ -1,0 +1,39 @@
+{
+  "limits": {
+    "egress": {
+      "capacity": 4,
+      "window": 10
+    },
+    "credential": {
+      "capacity": 3,
+      "window": 10
+    },
+    "tenant": {
+      "capacity": 2,
+      "window": 10
+    }
+  },
+  "requests": [
+    {
+      "id": "r1",
+      "tenant": "rice",
+      "credential": "shared",
+      "weight": 1,
+      "replayable": true
+    },
+    {
+      "id": "r2",
+      "tenant": "tea",
+      "credential": "shared",
+      "weight": 3,
+      "replayable": true
+    },
+    {
+      "id": "r3",
+      "tenant": "fruit",
+      "credential": "isolated",
+      "weight": 1,
+      "replayable": false
+    }
+  ]
+}
